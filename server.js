@@ -69,7 +69,15 @@ app.put('/users/update', function(req,res,next){
         'UPDATE users SET fname=? , lname=?, username=?, password=?, avatar=? WHERE id=?',
         [fname,lname,username,password,avatar,id],
         function(err, results, fields){
-            res.status(200).json(results);
+            //res.status(200).json(results);
+            res.status(200).json({
+                status : '200',
+                message : 'Updated',
+                results : results.length,
+                data: {
+                    results:results
+                }
+            })
         }
     );
 }
