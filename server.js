@@ -90,7 +90,15 @@ app.delete('/users/delete', function(req,res,next){
         'DELETE FROM users WHERE id= ?',
         [id],
         function(err, results, fields){
-            res.status(200).json(results);
+           // res.status(200).json(results);
+           res.status(200).json({
+            status : '200',
+            message : 'Deleted',
+            results : results.length,
+            data: {
+                results:results
+            }
+        })
         }
     );
 }
